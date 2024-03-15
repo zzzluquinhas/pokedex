@@ -1,2 +1,2 @@
-# pokedex
-Sistema para treinadores aprenderem mais sobre seus pokémon!
+# Pokédex
+  Sistema para treinadores que querem aprenderem mais sobre seus pokémon!
