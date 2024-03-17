@@ -6,13 +6,13 @@ O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores po
 
 ## Funcionalidades Principais:
 - Cadastro de Pokémon:
- - Os usuários podem adicionar Pokémon ao seu time através da nossa integração com a API pokéAPI. Basta especificar o nome ou número do Pokémon desejado, e o sistema irá recuperar automaticamente os dados relevantes, como tipo, habilidades e estatísticas.
+  - Os usuários podem adicionar Pokémon ao seu time através da nossa integração com a API pokéAPI. Basta especificar o nome ou número do Pokémon desejado, e o sistema irá recuperar automaticamente os dados relevantes, como tipo, habilidades e estatísticas.
 - Cadastro de Times:
- - Os usuários podem elaborar diversos times que podem ter focos em diferentes estratégias que serão armazenados em um banco de dados.
+  - Os usuários podem elaborar diversos times que podem ter focos em diferentes estratégias que serão armazenados em um banco de dados.
 - Gerenciamento do Time:
- - Os usuários podem facilmente adicionar e remover Pokémon de um time conforme desejado. Isso permite ajustes dinâmicos para otimizar a composição do time para diferentes situações de batalha.
+  - Os usuários podem facilmente adicionar e remover Pokémon de um time conforme desejado. Isso permite ajustes dinâmicos para otimizar a composição do time para diferentes situações de batalha.
 - Visualização de Informações dos Pokémon:
- - Os usuários podem acessar informações detalhadas sobre cada Pokémon, incluindo estatísticas base, movimentos, fraquezas e resistências. Isso ajuda na elaboração de estratégias eficazes de batalha.
+  - Os usuários podem acessar informações detalhadas sobre cada Pokémon, incluindo estatísticas base, movimentos, fraquezas e resistências. Isso ajuda na elaboração de estratégias eficazes de batalha.
 
 ## Membros da equipe e papéis:
 - [Juan Marcos Braga Faria](https://github.com/juanmfaria) - Backend
