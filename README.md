@@ -39,14 +39,35 @@ O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores po
 1. Como usuário, eu gostaria de nomear um time de pokémon
 
 ## Sprint backlog:
+Backlog da Sprint:
 História 1: Como usuário, eu gostaria de saber mais sobre um pokémon específico
 Tarefas e responsáveis:
+Definir classe “Pokémon” com informações mais relevantes para a pokédex [Rodrigo]
+Construir lógica para requisição de dados da PokéAPI [Juan]
+Configurar mecanismo de busca [Lucas + Juan]
+Desenvolver tela inicial com caixa de busca [Lucas]
+Desenvolver tela com resultados da busca [Kaique]
+Desenvolver tela de exibição das informações de um Pokémon [Kaique]
 
 História 2: Como usuário, eu gostaria de ter uma conta na aplicação
 Tarefas e responsáveis:
+Criar conta no banco Firebase [Lucas]
+Definir classe “Usuário” com informações de login, senha e lista de pokémon [Rodrigo]
+Mapear a classe “Usuário” no banco de dados [Juan]
+Desenvolver interface inicial de login do usuário [Lucas]
+Adicionar integração da interface de usuário à tela inicial (botão de login antes de entrar, nome depois de entrar) [Kaique]
 
 História 3: Como usuário, eu gostaria de adicionar/remover um pokémon à minha conta
 Tarefas e responsáveis:
+Definir lista de pokémons para cada usuário no banco de dados [Juan]
+Mapear a classe “Pokemon” no banco de dados [Rodrigo]
+Desenvolver tela para exibição de lista de pokémon de cada usuário [Kaique]
+Desenvolver “menu de adição” de um pokémon à lista (para adicionar atributos como nickname) [Kaique]
+Adicionar à tela de exibição de um pokémon uma integração para adicionar o pokémon [Lucas]
+Adicionar à tela de resultados de busca uma integração para adicionar o pokémon [Lucas]
 
 História 4: Como usuário, eu gostaria de nomear um pokémon que gosto muito
 Tarefas e responsáveis:
+Definir método que permite mudar o nome de um pokémon da lista de um usuário [Rodrigo]
+Criar um botão no pokémon do usuário para alterar o nome [Kaique]
+Adicionar integração do método de mudança de nome na interface de exibição das informações de um pokémon na lista de um usuário [Kaique]
