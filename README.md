@@ -37,3 +37,16 @@ O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores po
 1. Como usuário, eu gostaria de colocar um pokémon novo num time já montado (substituir)
 1. Como usuário, eu gostaria de sempre ver meus times favoritos primeiro na interface
 1. Como usuário, eu gostaria de nomear um time de pokémon
+
+## Sprint backlog:
+História 1: Como usuário, eu gostaria de saber mais sobre um pokémon específico
+Tarefas e responsáveis:
+
+História 2: Como usuário, eu gostaria de ter uma conta na aplicação
+Tarefas e responsáveis:
+
+História 3: Como usuário, eu gostaria de adicionar/remover um pokémon à minha conta
+Tarefas e responsáveis:
+
+História 4: Como usuário, eu gostaria de nomear um pokémon que gosto muito
+Tarefas e responsáveis:
