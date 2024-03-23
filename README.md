@@ -25,3 +25,15 @@ O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores po
 - HTML, CSS e Javascript para frontend
 - Firebase como banco de dados noSQL
 - Python para integração dos componentes
+
+## User Stories:
+1. Como usuário, eu gostaria de saber mais sobre um pokémon específico
+1. Como usuário, eu gostaria de ter uma conta na aplicação
+1. Como usuário, eu gostaria de adicionar/remover um pokémon à minha conta
+1. Como usuário, eu gostaria de nomear um pokémon que gosto muito
+1. Como usuário, eu gostaria de adicionar/remover um pokémon a um time novo
+1. Como usuário, eu gostaria de ordenar meus times por aqueles que mais uso/venci/"gosto"
+1. Como usuário, eu gostaria de adicionar/remover um pokémon à minha lista de favoritos
+1. Como usuário, eu gostaria de colocar um pokémon novo num time já montado (substituir)
+1. Como usuário, eu gostaria de sempre ver meus times favoritos primeiro na interface
+1. Como usuário, eu gostaria de nomear um time de pokémon
