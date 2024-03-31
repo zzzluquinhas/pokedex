@@ -1,0 +1,23 @@
+.pokemon-abilities-wrapper{
+    background-color: lightsalmon;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.pokemon-abilities-title{
+    font-size: 24px;
+}
+
+.pokemon-abilities-container{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    overflow-x: auto; 
+    white-space: nowrap; 
+}
+
+.pokemon-ability{
+    background-color: salmon;
+    padding: 4px;
+    border-radius: 5px;
+}

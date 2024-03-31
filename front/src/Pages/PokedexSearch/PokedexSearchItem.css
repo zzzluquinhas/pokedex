@@ -1,0 +1,35 @@
+.pokemon-item-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pokemon-img-wrapper{
+    width: 180px;
+    height: 180px;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.pokemon-number{
+    font-size: 12px;
+    color: lightgray;
+}
+
+.pokemon-name{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pokemon-typing{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#pokemon-typing-item{
+    width: 85px;
+    text-align: center;
+    background-color: lightgray;
+    border-radius: 5px;
+}

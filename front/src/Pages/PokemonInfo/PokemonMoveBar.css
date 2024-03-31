@@ -1,0 +1,14 @@
+.pokemon-move-bar-wrapper{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+    background-color: lightgreen;
+}
+
+.move-main-info{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}

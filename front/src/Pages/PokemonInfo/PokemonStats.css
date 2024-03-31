@@ -1,0 +1,13 @@
+.pokemon-stats-wrapper{
+    background-color: lightsalmon;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.pokemon-stats-title{
+    font-size: 24px;
+}
+
+.pokemon-total-stats{
+    font-size: 20px;
+}

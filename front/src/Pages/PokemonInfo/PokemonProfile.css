@@ -1,0 +1,41 @@
+.pokemon-profile-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pokemon-profile-id{
+    display: flex;
+    flex-direction: column;
+}
+
+.pokemon-profile-number{
+    font-size: 24px;
+}
+
+.pokemon-profile-name{
+    font-size: 36px;
+}
+
+.pokemon-profile-img{
+    background-color: lightgray;
+    width: 280px;
+    height: 240px;
+    border-radius: 15px;
+}
+
+.pokemon-profile-typing{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#pokemon-profile-typing-item{
+    width: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightpink;
+    border-radius: 8px;
+    height: 25px;
+}
