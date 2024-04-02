@@ -52,3 +52,59 @@ Representa um pokémon que pertence a um usuário. Possui um apelido como campo 
  - **nickname**
 
 	>Apelido do pokemón
+
+## PokemonTeam
+
+Representa um time de pokémon de um usuário.
+
+ - **user**
+
+	>Identificador do usuário a qual o time pertence (referente a entidade User)
+
+ - **teamName**
+
+	>Nome do time
+
+ - **member1**
+
+	>Pokémon 1 membro do time (referente a entidade MyPokemon)
+
+ - **member2**
+
+	>Pokémon 2 membro do time (referente a entidade MyPokemon)
+
+ - **member3**
+
+	>Pokémon 3 membro do time (referente a entidade MyPokemon)
+
+ - **member4**
+
+	>Pokémon 4 membro do time (referente a entidade MyPokemon)
+
+ - **member5**
+
+	>Pokémon 5 membro do time (referente a entidade MyPokemon)
+
+ - **member6**
+
+	>Pokémon 6 membro do time (referente a entidade MyPokemon)
+
+## User
+
+Representa um usuário. 
+
+ - **login**
+
+	>Identificador do usuário
+
+ - **password**
+
+	>Sequência de caracteres para acesso
+
+ - **pokemonList**
+
+	>Lista de pokémon do usuário (referente a entidade MyPokemon - múltiplo)
+
+ - **teams**
+
+	>Lista de times do usuário (referente a entidade PokemonTeam - múltiplo)
