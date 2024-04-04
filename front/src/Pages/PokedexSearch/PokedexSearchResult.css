@@ -1,0 +1,7 @@
+
+.pokemon-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 20px;
+    gap: 20px;
+}

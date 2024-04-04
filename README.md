@@ -47,7 +47,7 @@ Construir lógica para requisição de dados da PokéAPI [Juan]
 Configurar mecanismo de busca [Lucas + Juan]
 Desenvolver tela inicial com caixa de busca [Lucas]
 Desenvolver tela com resultados da busca [Kaique]
-Desenvolver tela de exibição das informações de um Pokémon [Kaique]
+Desenvolver tela de exibição das informações de um Pokémon [Kaique] - Done
 
 História 2: Como usuário, eu gostaria de ter uma conta na aplicação
 Tarefas e responsáveis:

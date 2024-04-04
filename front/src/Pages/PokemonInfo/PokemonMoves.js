@@ -8,7 +8,7 @@ export function PokemonMoves(){
             </div>
             <div className='pokemon-moves-container'>
                 <PokemonMoveBar moveName="Vine Whip" moveType="Grass" moveEffect="Phisical" movePP="10"></PokemonMoveBar>
-                <PokemonMoveBar moveName="Vine Whip" moveType="Grass" moveEffect="Phisical" movePP="10"></PokemonMoveBar>
+                <PokemonMoveBar moveName="Water Gun" moveType="Water" moveEffect="Special" movePP="10"></PokemonMoveBar>
                 <PokemonMoveBar moveName="Vine Whip" moveType="Grass" moveEffect="Phisical" movePP="10"></PokemonMoveBar>
                 <PokemonMoveBar moveName="Vine Whip" moveType="Grass" moveEffect="Phisical" movePP="10"></PokemonMoveBar>   
                 <PokemonMoveBar moveName="Vine Whip" moveType="Grass" moveEffect="Phisical" movePP="10"></PokemonMoveBar>

@@ -4,7 +4,7 @@ export function PokemonProfile(){
         <div className='pokemon-profile-wrapper'>
             <div className='pokemon-profile-id'>
                 <div className='pokemon-profile-number'>Nº 0000</div>
-                <div className='pokemon-profile-name'>Pokemon Name</div>
+                <div className='pokemon-profile-name'>Iron Valiant</div>
                 <div className='pokemon-profile-img'></div>
             </div>
             <div className="pokemon-profile-typing">

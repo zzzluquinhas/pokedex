@@ -3,10 +3,12 @@ import { PokemonStats } from './PokemonStats'
 import { PokemonMoves } from './PokemonMoves'
 import { PokemonAbilities } from './PokemonAbilities'
 import { PokemonProfile } from './PokemonProfile'
+import React, { useState, useEffect } from 'react';
 
 
 export function PokemonInfoPage({isOpen, setInfoOpen}){
     if(isOpen){
+        
         return(
         <>
             <div className='pokemon-info-page-modal'>

@@ -1,0 +1,20 @@
+:root{
+    --normal_type_color: #8f9aa0;
+    --fighting_type_color: #ce3f6a;
+    --flying_type_color: #93aade;
+    --poison_type_color: #aa6bc6;
+    --ground_type_color: #d97746;
+    --rock_type_color: #c8b78b;
+    --bug_type_color: #90c127;
+    --ghost_type_color: #5269ac;
+    --steel_type_color: #5a8fa1;
+    --fire_type_color: #fe9c53;
+    --water_type_color: #4f8fd7;
+    --grass_type_color: #64bb5c;
+    --electric_type_color: #f4d23b;
+    --psychic_type_color: #f97077;
+    --ice_type_color: #73cebf;
+    --dragon_type_color: #096dc2;
+    --dark_type_color: #5a5363;
+    --fairy_type_color: #ed8fe5;
+}
