@@ -7,7 +7,7 @@ export function PokedexSearchPage(){
 
     useEffect(() => {
         const fetchPokemonData = async () => {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokedex/national`);
+            const response = await fetch(`https://pokeapi.co/api/v2/pokedex/kanto`);
             const data = await response.json();
             setAllPokemon(data.pokemon_entries);
         };

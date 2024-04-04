@@ -30,7 +30,7 @@
     gap: 10px;
 }
 
-#pokemon-profile-typing-item{
+.pokemon-profile-typing-item{
     width: 135px;
     display: flex;
     align-items: center;
@@ -38,4 +38,78 @@
     background-color: lightpink;
     border-radius: 8px;
     height: 25px;
+}
+
+
+
+#normal{
+    background-color: var(--normal_type_color);
+}
+
+#fighting{
+    background-color: var(--fighting_type_color);
+}
+
+#flying{
+    background-color: var(--flying_type_color);
+}
+
+#poison{
+    background-color: var(--poison_type_color);
+}
+
+#ground{
+    background-color: var(--ground_type_color);
+}
+
+#rock{
+    background-color: var(--rock_type_color);
+}
+
+#bug{
+    background-color: var(--bug_type_color);
+}
+
+#ghost{
+    background-color: var(--ghost_type_color);
+}
+
+#steel{
+    background-color: var(--steel_type_color);
+}
+
+#fire{
+    background-color: var(--fire_type_color);
+}
+
+#water{
+    background-color: var(--water_type_color);
+}
+
+#grass{
+    background-color: var(--grass_type_color);
+}
+
+#electric{
+    background-color: var(--electric_type_color);
+}
+
+#psychic{
+    background-color: var(--psychic_type_color);
+}
+
+#ice{
+    background-color: var(--ice_type_color);
+}
+
+#dragon{
+    background-color: var(--dragon_type_color);
+}
+
+#dark{
+    background-color: var(--dark_type_color);
+}
+
+#fairy{
+    background-color: var(--fairy_type_color);
 }

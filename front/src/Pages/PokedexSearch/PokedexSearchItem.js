@@ -42,7 +42,7 @@ export function PokedexSearchItem(props){
                 </div>
             </div>
             <button onClick={() => setOpenInfo(true)}>Abrir modal</button>
-            <PokemonInfoPage isOpen={openInfo} setInfoOpen={() => setOpenInfo(!openInfo)} pokemonNumber={pokemonNumber}></PokemonInfoPage>
+            <PokemonInfoPage pkmNumber={props.pokemonNumber} isOpen={openInfo} setInfoOpen={() => setOpenInfo(!openInfo)} ></PokemonInfoPage>
         </div>
     )
 }
