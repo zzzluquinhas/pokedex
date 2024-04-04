@@ -41,10 +41,10 @@ export function PokemonMoveBar(props){
                     {moveName}
                 </div>
                 <div className='move-type'>
-                    {moveType}
+                    <img src={`../../assets/icons/${moveType}_type_icon.png`} widht="12" height="12" /> 
                 </div>
                 <div className='move-effect'>
-                    {moveClass}
+                    <img src={`../../assets/icons/${moveClass}_move_icon.png`} widht="12" height="12" /> 
                 </div>
             </div>
             <div className='move-power-info'>
