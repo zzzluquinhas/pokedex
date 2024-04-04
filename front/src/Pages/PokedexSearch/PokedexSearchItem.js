@@ -15,10 +15,21 @@ export function PokedexSearchItem(props){
             const data = await response.json();
             setPokemonImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.pokemonNumber}.png`);
             setPokemonType(data.types);
-            setPokemonName(props.pokemonName.charAt(0).toUpperCase() + props.pokemonName.slice(1));
+            function formatPokemonName(name) {
+                // Split the string by dashes
+                const words = name.split('-');
+            
+                // Capitalize the first letter of each word
+                const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+            
+                // Join the words back together with a space
+                const formattedName = capitalizedWords.join(' ');
+            
+                return formattedName;
+            }
+            setPokemonName(formatPokemonName(props.pokemonName));
             setPokemonNumber(props.pokemonNumber.toString().padStart(4, '0'));
 
-            console.log(pokemonType);
         };
 
         fetchPokemonData();

@@ -1,41 +1,46 @@
-import './ProfileSideBar.css'
-import { useState } from "react"
-
-import { GoSidebarExpand } from "react-icons/go";
-import { GoSidebarCollapse } from "react-icons/go";
-import { CgProfile } from "react-icons/cg";
-import { FaUserEdit } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
-import { CgPokemon } from "react-icons/cg";
+import React, { useState } from "react";
+import { GoSidebarExpand, GoSidebarCollapse } from "react-icons/go";
+import { CgProfile, CgPokemon } from "react-icons/cg";
+import { FaUserEdit, FaSearch } from "react-icons/fa";
 import { AiOutlineTeam } from "react-icons/ai";
 
+import "./ProfileSideBar.css";
 
-export function ProfileSideBar(){
-    const [openSideBar, setOpenSideBar] = useState(false);
-    if(!openSideBar){
-        return(
-            <div className="profile-side-bar">
-                <button className="expand-tab" onClick={() => setOpenSideBar(true)}>
-                    <GoSidebarExpand /> </button>
-                <div className="profile-tab"> <CgProfile /> </div>
-                <div className="edit-data-tab"> <FaUserEdit /> </div>
-                <div className="pokedex-tab"> <FaSearch /> </div>
-                <div className="my-pokemon-tab"> <CgPokemon /> </div>
-                <div className="my-teams-tab"> <AiOutlineTeam /> </div>
-            </div>
-        )
-    }else{
-        return(
-            <div className="profile-side-bar" id="expand">
-                <button className="expand-tab" button onClick={() => setOpenSideBar(false)}>
-                    <GoSidebarCollapse  /> COLLAPSE</button>
-                <div className="profile-tab"> <CgProfile /> PROFILE DATA</div>
-                <div className="edit-data-tab"> <FaUserEdit /> EDIT PROFILE DATA</div>
-                <div className="pokedex-tab"> <FaSearch /> POKEDEX SEARCH</div>
-                <div className="my-pokemon-tab"> <CgPokemon /> MY POKEMON</div>
-                <div className="my-teams-tab"> <AiOutlineTeam /> MY TEAMS</div>
-            </div>
-        )
-    }
-    
+export function ProfileSideBar({ setSidebarWidth }) {
+  const [openSideBar, setOpenSideBar] = useState(false);
+
+  const handleToggleSidebar = () => {
+    setOpenSideBar(!openSideBar);
+  };
+
+  // Função para obter a largura atual da barra lateral
+  const getSidebarWidth = () => {
+    return openSideBar ? "300px" : "50px";
+  };
+
+  // Atualiza a largura da barra lateral no componente pai (PokedexSearchPage)
+  setSidebarWidth(getSidebarWidth());
+
+  return (
+    <div className="profile-side-bar" style={{ width: getSidebarWidth() }}>
+      <button className="expand-tab" onClick={handleToggleSidebar}>
+        {openSideBar ? <GoSidebarCollapse /> : <GoSidebarExpand />}
+      </button>
+      <div className="profile-tab">
+        <CgProfile />
+      </div>
+      <div className="edit-data-tab">
+        <FaUserEdit />
+      </div>
+      <div className="pokedex-tab">
+        <FaSearch />
+      </div>
+      <div className="my-pokemon-tab">
+        <CgPokemon />
+      </div>
+      <div className="my-teams-tab">
+        <AiOutlineTeam />
+      </div>
+    </div>
+  );
 }

@@ -19,10 +19,21 @@ export function PokemonInfoPage({pkmNumber, isOpen, setInfoOpen}){
         const fetchPokemonData = async () => {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkmNumber}`);
             const data = await response.json();
-            console.log(data);
             setPokemonImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pkmNumber}.png`);
             setPokemonType(data.types);
-            setPokemonName(data.species.name.charAt(0).toUpperCase() + data.species.name.slice(1));
+            function formatPokemonName(name) {
+                // Split the string by dashes
+                const words = name.split('-');
+            
+                // Capitalize the first letter of each word
+                const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+            
+                // Join the words back together with a space
+                const formattedName = capitalizedWords.join(' ');
+            
+                return formattedName;
+            }
+            setPokemonName(formatPokemonName(data.species.name));
             setPokemonNumber(pkmNumber.toString().padStart(4, '0'));
             setPokemonAbilities(data.abilities);
             setPokemonStats(data.stats);
