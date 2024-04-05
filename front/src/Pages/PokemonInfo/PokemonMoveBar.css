@@ -12,6 +12,7 @@
     gap: 5px;
 }
 
+
 #normal{
     background-color: var(--normal_type_color);
 }
@@ -83,3 +84,4 @@
 #fairy{
     background-color: var(--fairy_type_color);
 }
+

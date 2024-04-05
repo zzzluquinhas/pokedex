@@ -4,9 +4,10 @@ import React, { useState, useEffect } from 'react';
 export function PokemonMoveBar(props){
     const [moveName, setMoveName] = useState([]);
     const [moveType, setMoveType] = useState([]);
-    const [moveClass, setMoveClass] = useState([]);
     const [movePP, setMovePP] = useState([]);
     const [movePower, setMovePower] = useState([]);
+    const [typeUrl, setTypeUrl] = useState([]);
+    const [classUrl, setClassUrl] = useState([]);
     
     useEffect(() => {
         const fetchMoveData = async () => {
@@ -26,10 +27,10 @@ export function PokemonMoveBar(props){
             }
             setMoveName(formatMoveName(data.name));
             setMoveType(data.type.name);
-            setMoveClass(data.damage_class.name);
             setMovePP(data.pp);
             setMovePower(data.power);
-
+            setTypeUrl(`../../assets/icons/${data.type.name}_type_icon.png`);
+            setClassUrl(`../../assets/icons/${data.damage_class.name}_move_icon.png`);
         };
 
         fetchMoveData();
@@ -41,10 +42,10 @@ export function PokemonMoveBar(props){
                     {moveName}
                 </div>
                 <div className='move-type'>
-                    <img src={`../../assets/icons/${moveType}_type_icon.png`} widht="12" height="12" /> 
+                    <img class="move-type-image" src={typeUrl} ></img>
                 </div>
-                <div className='move-effect'>
-                    <img src={`../../assets/icons/${moveClass}_move_icon.png`} widht="12" height="12" /> 
+                <div className='move-effect' >
+                    <img class="move-class-image" src={classUrl} ></img>
                 </div>
             </div>
             <div className='move-power-info'>
