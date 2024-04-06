@@ -11,6 +11,12 @@ export function PokedexSearchBar({ onSubmit }) {
     const handleSubmit = () => {
         onSubmit(searchInput.toLowerCase().replace(" ", "-"));
     };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit();
+        }
+    };
     return(
         <div className='pokedex-search-bar'>
             <div className="poqueerdex-icon">
@@ -21,6 +27,7 @@ export function PokedexSearchBar({ onSubmit }) {
                     className="search-pokemon"
                     value={searchInput}
                     onChange={handleInputChange}
+                    onKeyPress={handleKeyPress}
                     placeholder='Filter by number or name'
                 />
                 <button className="submit-search" onClick={handleSubmit}>SEARCH</button>

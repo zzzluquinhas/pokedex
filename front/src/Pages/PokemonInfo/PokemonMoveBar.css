@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-items: center;
 }
 
 
@@ -85,3 +86,96 @@
     background-color: var(--fairy_type_color);
 }
 
+
+
+.move-effect, .move-type{
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+}
+
+#normal-type-icon{
+    background-image: url('../../assets/icons/normal_type_icon.png');
+}
+
+#fighting-type-icon{
+    background-image: url('../../assets/icons/fighting_type_icon.png');
+}
+
+#flying-type-icon{
+    background-image: url('../../assets/icons/flying_type_icon.png');
+}
+
+#poison-type-icon{
+    background-image: url('../../assets/icons/poison_type_icon.png');
+}
+
+#ground-type-icon{
+    background-image: url('../../assets/icons/ground_type_icon.png');
+}
+
+#rock-type-icon{
+    background-image: url('../../assets/icons/rock_type_icon.png');
+}
+
+#bug-type-icon{
+    background-image: url('../../assets/icons/bug-type-icon.png');
+}
+
+#ghost-type-icon{
+    background-image: url('../../assets/icons/ghost_type_icon.png');
+}
+
+#steel-type-icon{
+    background-image: url('../../assets/icons/steel_type_icon.png');
+}
+
+#fire-type-icon{
+    background-image: url('../../assets/icons/fire_type_icon.png');
+}
+
+#water-type-icon{
+    background-image: url('../../assets/icons/water_type_icon.png');
+}
+
+#grass-type-icon{
+    background-image: url('../../assets/icons/grass_type_icon.png');
+}
+
+#electric-type-icon{
+    background-image: url('../../assets/icons/electric_type_icon.png');
+}
+
+#psychic-type-icon{
+    background-image: url('../../assets/icons/psychic_type_icon.png');
+}
+
+#ice-type-icon{
+    background-image: url('../../assets/icons/ice_type_icon.png');
+}
+
+#dragon-type-icon{
+    background-image: url('../../assets/icons/dragon_type_icon.png');
+}
+
+#dark-type-icon{
+    background-image: url('../../assets/icons/dark_type_icon.png');
+}
+
+#fairy-type-icon{
+    background-image: url('../../assets/icons/fairy_type_icon.png');
+}
+
+#physical-move-icon{
+    background-image: url('../../assets/icons/physical_move_icon.png');
+}
+
+#special-move-icon{
+    background-image: url('../../assets/icons/special_move_icon.png');
+}
+
+#status-move-icon{
+    background-image: url('../../assets/icons/status_move_icon.png');
+}

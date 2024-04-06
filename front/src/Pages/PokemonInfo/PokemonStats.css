@@ -11,3 +11,9 @@
 .pokemon-total-stats{
     font-size: 20px;
 }
+
+.pokemon-profile-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

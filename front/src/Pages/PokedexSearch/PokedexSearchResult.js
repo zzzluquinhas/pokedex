@@ -5,7 +5,6 @@ import { PokemonInfoPage } from "../PokemonInfo/PokemonInfoPage";
 
 
 export function PokedexSearchResult(props){
-    console.log(props.pokemonList);
     if(props.loading)
     return(
             <div>Loading...</div>
