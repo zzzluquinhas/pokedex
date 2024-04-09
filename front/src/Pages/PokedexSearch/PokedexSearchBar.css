@@ -6,7 +6,7 @@
 }
 .poqueerdex-icon{
     width: 30%;
-    background-color: yellow;
+    background-color: var(--primary);
 }
 
 .search-bar{
