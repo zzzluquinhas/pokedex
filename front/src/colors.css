@@ -42,8 +42,10 @@
     --speed_stat_border: #962ac5;
     --speed_stat_bkg: #d980ff;
 
-	--primary: #c22b44;
-	--secondary: #5080ae;
-	--button: #57bbd0;
-	--button_hover: #80e0ee;
+	--primary: #ff604b;
+	--secondary: #dae4e4;
+	--secondary-variant: #b9cfcf;
+	--background: #ffeaea;
+	--button: #41d1d6;
+	--button_hover: #81ecf0;
 }
