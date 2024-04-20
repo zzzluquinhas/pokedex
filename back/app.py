@@ -12,6 +12,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 users_ref = db.collection('users')
 pokemon_ref = db.collection('pokemon')
+#Definir se a história de criar times será feita
 teams_ref = db.collection('teams')
 
 #Criar usuário
