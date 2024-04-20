@@ -1,0 +1,20 @@
+.pokemon-stats-wrapper{
+    background-color: var(--secondary);
+    border-radius: 8px;
+    padding: 5px;
+	border: 2px solid black;
+}
+
+.pokemon-stats-title{
+    font-size: 24px;
+}
+
+.pokemon-total-stats{
+    font-size: 20px;
+}
+
+.pokemon-profile-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
