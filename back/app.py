@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import firebase_admin
-from classes import User, Pokemon, Team
+from classes import User, Pokemon
 from firebase_admin import credentials, firestore
 
 app = Flask(__name__)
@@ -12,8 +12,6 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 users_ref = db.collection('users')
 pokemon_ref = db.collection('pokemon')
-#Definir se a história de criar times será feita
-teams_ref = db.collection('teams')
 
 #Criar usuário
 @app.route('/createUser', methods=['POST'])

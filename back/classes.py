@@ -33,18 +33,3 @@ class Pokemon:
             'pokedex': self.pokedex,
             'user': self.user.to_dict() if self.user else None
         }
-
-class Team:
-    def __init__(self, id, nome, user=None, members=[]):
-        self.id = id
-        self.nome = nome
-        self.user = user
-        self.members = members
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'nome': self.nome,
-            'user': self.user.to_dict() if self.user else None,
-            'members': [member.to_dict() for member in self.members]
-        }
