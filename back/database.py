@@ -41,7 +41,7 @@ def addPokemonToList(pokemon_data):
 
 	new_pokemon_ref = pokemonList.document(pokemon_data['pokemonID'])
 	new_pokemon_ref.set({
-		'pokemonID': pokemon_data['pokemonID'],
+		'pokemonID': int(pokemon_data['pokemonID']),
 	})
 
 
