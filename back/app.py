@@ -20,7 +20,7 @@ def createNewUser():
 
 	query = users_ref.document(user_data['login']).get()
 
-	if query:
+	if query.exists:
 		return {'error': 'User already exists'}, 400
 	
 	new_user_ref = users_ref.document(user_data['login'])
