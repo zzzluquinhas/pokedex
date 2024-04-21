@@ -5,8 +5,7 @@ from firebase_admin import credentials, firestore
 
 app = Flask(__name__)
 
-# Certifique-se de substituir "path/to/serviceAccountKey.json" pelo caminho real para o arquivo de chave de serviço que você baixou do console do Firebase.
-cred = credentials.Certificate("path/to/serviceAccountKey.json")
+cred = credentials.Certificate("./serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
@@ -23,7 +22,7 @@ def create_user():
     query = users_ref.where('login', '==', user_data['login']).limit(1).get()
 
     if query:
-        return jsonify({'error': 'User already exists'}), 400
+        return jsonify({'error': 'User already exists'}), 400   #TODO user versus password error
     
     new_user_ref = users_ref.document()
     new_user_ref.set({
@@ -53,11 +52,11 @@ def create_pokemon():
     pokemon_data = request.json
 
     new_pokemon_ref = pokemon_ref.document()
-    new_pokemon_ref.set({
+    new_pokemon_ref.set({   #TODO verificar se usuário existe e está logado
+        'user': pokemon_data['user'],   # usuário deve estar logado (e com token válido?)
+        'pokemonNumber': pokemon_data['pokemonNumber'],
         'name': pokemon_data['name'],
         'nickname': pokemon_data['nickname'],
-        'pokedex': pokemon_data['pokedex'],
-        'user': pokemon_data['user']  # Seria ID de usuário aqui (?)
     })
 
     return jsonify({'message': 'Pokemon saved successfully'}), 201
