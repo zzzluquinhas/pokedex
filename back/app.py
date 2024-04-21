@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import firebase_admin
 from classes import User, Pokemon
 from firebase_admin import credentials, firestore
-from database import createNewUser, checkUserCredentials, addPokemonToList, getUserPokemons, renamePokemon
 
 app = Flask(__name__)
 
@@ -10,21 +9,21 @@ cred = credentials.Certificate("./serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
-users_ref = db.collection('users')
+usersReference = db.collection('users')
 
 #Criar usuário
 @app.route('/createUser', methods=['POST'])
 def createNewUser():
-	user_data = request.json
+	userData = request.json
 
-	query = users_ref.document(user_data['login']).get()
+	query = usersReference.document(userData['login']).get()
 
 	if query.exists:
 		return {'error': 'User already exists'}, 400
 	
-	new_user_ref = users_ref.document(user_data['login'])
-	new_user_ref.set({
-		'password': user_data['password'],
+	newUserReference = usersReference.document(userData['login'])
+	newUserReference.set({
+		'password': userData['password'],
 	})
 
 	return {'message': 'User created successfully'}, 201
@@ -35,14 +34,14 @@ def checkUserCredentials():
 	login = request.args.get('login')
 	password = request.args.get('password')
 
-	user_doc = users_ref.document(login).get()
+	userDoc = usersReference.document(login).get()
 	
-	if not user_doc.exists:
+	if not userDoc.exists:
 		return {'error': 'User not found'}, 404
 	
-	user_data = user_doc.to_dict()
+	userData = userDoc.to_dict()
 
-	if user_data['password'] == password:
+	if userData['password'] == password:
 		return {'message': 'User logged in successfully'}, 200
 	else:
 		return {'error': 'Invalid password'}, 401
@@ -50,13 +49,13 @@ def checkUserCredentials():
 #Adicionar Pokemon
 @app.route('/createPokemon', methods=['POST'])
 def addPokemonToList():
-	pokemon_data = request.json
+	pokemonData = request.json
 
-	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
+	pokemonList = usersReference.document(pokemonData['user']).collection('pokemonList')
 
-	new_pokemon_ref = pokemonList.document()
-	new_pokemon_ref.set({
-		'pokemonID': pokemon_data['pokemonID'],
+	newPokemonReference = pokemonList.document()
+	newPokemonReference.set({
+		'pokemonID': pokemonData['pokemonID'],
 	})
 
 	return {'message': 'Pokemon saved successfully'}, 201
@@ -64,26 +63,26 @@ def addPokemonToList():
 #Retornar pokemon de um usuário
 @app.route('/getPokemons', methods=['GET'])
 def getUserPokemons():
-	user_id = request.args.get('user_id')
+	userId = request.args.get('userId')
 
-	query = users_ref.document(user_id).collection('pokemonList').get()
+	query = usersReference.document(userId).collection('pokemonList').get()
 
 	if query:
-		user_data = [pokemon.to_dict() for pokemon in query]
-		return user_data, 200
+		userData = [pokemon.to_dict() for pokemon in query]
+		return userData, 200
 	else:
 		return {'error': 'User not found'}, 404
 
 #Mudar o nickname do Pokémon
 @app.route('/renamePokemon', methods=['POST'])
 def renamePokemon():
-	pokemon_data = request.json
+	pokemonData = request.json
 
-	pokemon_ref = users_ref.document(pokemon_data['user']).collection('pokemonList').document(pokemon_data['pokemonID'])
+	pokemonReference = usersReference.document(pokemonData['user']).collection('pokemonList').document(pokemonData['pokemonID'])
 
-	if pokemon_ref.get().exists:
-		pokemon_ref.update({
-			'nickname': pokemon_data['nickname'],
+	if pokemonReference.get().exists:
+		pokemonReference.update({
+			'nickname': pokemonData['nickname'],
 		})
 		return {'message': 'Nickname updated successfully'}, 200
 	else:
