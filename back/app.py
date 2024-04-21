@@ -60,7 +60,6 @@ def addPokemonToList():
 		'pokemonID': pokemon_data['pokemonID'],
 	})
 
-
 	return {'message': 'Pokemon saved successfully'}, 201
 
 #Retornar pokemon de um usuário
@@ -77,7 +76,7 @@ def getUserPokemons():
 		return {'error': 'User not found'}, 404
 
 #Mudar o nickname do Pokémon
-@app.route('/renamePokemon', methods=['GET'])
+@app.route('/renamePokemon', methods=['POST'])
 def renamePokemon():
 	pokemon_data = request.json
 
