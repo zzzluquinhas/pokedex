@@ -41,13 +41,9 @@ Todos os pokémon disponíveis como resposta da PokeAPI devem ser armazenados co
 
 Representa um pokémon que pertence a um usuário. Possui um apelido como campo para ser o nome escolhido pelo usuário.
 
- - **user**
+ - **pokemonNumber**
 
-	>Identificador do usuário a qual o pokémon pertence (referente a entidade User)
-
- - **pokemon**
-
-	>Espécie do pokémon (referente a entidade Pokémon)
+	>Número do Pokémon 
 
  - **nickname**
 
