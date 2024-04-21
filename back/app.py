@@ -14,7 +14,7 @@ pokemon_ref = db.collection('pokemon')
 
 #Criar usuário
 @app.route('/createUser', methods=['POST'])
-def create_user():
+def createNewUser():
     user_data = request.json
 
     query = users_ref.where('login', '==', user_data['login']).limit(1).get()
@@ -32,7 +32,7 @@ def create_user():
 
 #Retornar usuário
 @app.route('/getUser', methods=['GET'])
-def get_user():
+def checkUserCredentials():
     login = request.args.get('login')
     password = request.args.get('password')
 
@@ -46,7 +46,7 @@ def get_user():
 
 #Adicionar Pokemon
 @app.route('/createPokemon', methods=['POST'])
-def create_pokemon():
+def addPokemonToList():
     pokemon_data = request.json
 
     new_pokemon_ref = pokemon_ref.document()
@@ -61,7 +61,7 @@ def create_pokemon():
 
 #Retornar pokemon de um usuário
 @app.route('/getPokemons', methods=['GET'])
-def get_user_pokemon():
+def getUserPokemons():
     user_id = request.args.get('user_id')
 
     query = pokemon_ref.where('user', '==', user_id).get()
@@ -73,6 +73,11 @@ def get_user_pokemon():
         pokemon_list.append(pokemon_data)
 
     return jsonify(pokemon_list), 200
+
+#Mudar o nickname do Pokémon
+@app.route('/renamePokemon', methods=['GET'])
+def renamePokemon():
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
