@@ -7,7 +7,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 users_ref = db.collection('users')
 
-def signUpUser(user_data):
+def createNewUser(user_data):
 
 	query = users_ref.document(user_data['login']).get()
 
@@ -21,7 +21,7 @@ def signUpUser(user_data):
 
 	return {'message': 'User created successfully'}, 201
 
-def loginUser(login, password):
+def checkUserCredentials(login, password):
 
 	user_doc = users_ref.document(login).get()
 	
@@ -36,7 +36,7 @@ def loginUser(login, password):
 		return {'error': 'Invalid password'}, 401
 
 	
-def addPokemon(pokemon_data):
+def addPokemonToList(pokemon_data):
 	# update users.pokemon_data['user'].pokemonList collection with a new document containing the pokemonID
 	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
 
@@ -48,7 +48,7 @@ def addPokemon(pokemon_data):
 
 	return {'message': 'Pokemon saved successfully'}, 201
 
-def getPokemon(login):
+def getUserPokemons(login):
 	query = users_ref.document(login).collection('pokemonList').get()
 
 	if query:
@@ -57,7 +57,7 @@ def getPokemon(login):
 	else:
 		return {'error': 'User not found'}, 404
 	
-def updateNickname(pokemon_data):
+def renamePokemon(pokemon_data):
 	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
 	query = pokemonList.where('pokemonID', '==', pokemon_data['pokemonID']).limit(1).get()
 
@@ -83,23 +83,23 @@ def menu():
 	if input_option == '1':
 		login = input('Login: ')
 		password = input('Password: ')
-		log = signUpUser({'login': login, 'password': password})
+		log = createNewUser({'login': login, 'password': password})
 	elif input_option == '2':
 		login = input('Login: ')
 		password = input('Password: ')
-		log = loginUser(login, password)
+		log = checkUserCredentials(login, password)
 	elif input_option == '3':
 		pokemonID = input('PokemonID: ')
 		user = input('User: ')
-		log = addPokemon({'pokemonID': pokemonID, 'user': user})
+		log = addPokemonToList({'pokemonID': pokemonID, 'user': user})
 	elif input_option == '4':
 		login = input('Login: ')
-		log = getPokemon(login)
+		log = getUserPokemons(login)
 	elif input_option == '5':
 		pokemonID = input('PokemonID: ')
 		user = input('User: ')
 		nickname = input('Nickname: ')
-		log = updateNickname({'pokemonID': pokemonID, 'user': user, 'nickname': nickname})
+		log = renamePokemon({'pokemonID': pokemonID, 'user': user, 'nickname': nickname})
 	elif input_option == '6':
 		return
 	
