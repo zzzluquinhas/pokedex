@@ -37,6 +37,9 @@ O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores po
 1. Como usuário, eu gostaria de colocar um pokémon novo num time já montado (substituir)
 1. Como usuário, eu gostaria de sempre ver meus times favoritos primeiro na interface
 1. Como usuário, eu gostaria de nomear um time de pokémon
+1. Como usuário, eu gostaria de recuperar meu acesso caso esqueça a senha
+1. Como usuário, eu gostaria que as minhas credenciais de acesso fossem armazenadas de forma segura.
+
 
 ## Sprint backlog:
 História 1: Como usuário, eu gostaria de saber mais sobre um pokémon específico.
