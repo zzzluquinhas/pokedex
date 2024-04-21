@@ -1,0 +1,51 @@
+:root{
+    --normal_type_color: #8f9aa0;
+    --fighting_type_color: #ce3f6a;
+    --flying_type_color: #93aade;
+    --poison_type_color: #aa6bc6;
+    --ground_type_color: #d97746;
+    --rock_type_color: #c8b78b;
+    --bug_type_color: #90c127;
+    --ghost_type_color: #5269ac;
+    --steel_type_color: #5a8fa1;
+    --fire_type_color: #fe9c53;
+    --water_type_color: #4f8fd7;
+    --grass_type_color: #64bb5c;
+    --electric_type_color: #f4d23b;
+    --psychic_type_color: #f97077;
+    --ice_type_color: #73cebf;
+    --dragon_type_color: #096dc2;
+    --dark_type_color: #5a5363;
+    --fairy_type_color: #ed8fe5;
+
+    --hp_stat_color: #2eeb5d;
+    --hp_stat_border: #119e33;
+    --hp_stat_bkg: #77f297;
+
+    --attack_stat_color: #f0d847;
+    --attack_stat_border: #a08d1c;
+    --attack_stat_bkg: #f4e485;
+
+    --defense_stat_color: #ff8731;
+    --defense_stat_border: #c86927;
+    --defense_stat_bkg: #feb17b;
+
+    --spatk_stat_color: #48ccd1;
+    --spatk_stat_border: #2c8d95;
+    --spatk_stat_bkg: #89dee3;
+
+    --spdef_stat_color: #436bff;
+    --spdef_stat_border: #2e50c5;
+    --spdef_stat_bkg: #859ffe;
+
+    --speed_stat_color: #c53aff;
+    --speed_stat_border: #962ac5;
+    --speed_stat_bkg: #d980ff;
+
+	--primary: #ff604b;
+	--secondary: #dae4e4;
+	--secondary-variant: #b9cfcf;
+	--background: #ffeaea;
+	--button: #41d1d6;
+	--button_hover: #81ecf0;
+}
