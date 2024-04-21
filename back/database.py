@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred = credentials.Certificate("back/serviceAccountKey.json")
+cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
@@ -12,7 +12,7 @@ def signUpUser(user_data):
 	query = users_ref.document(user_data['login']).get()
 
 	if query:
-		{'error': 'User already exists'}, 400
+		return {'error': 'User already exists'}, 400
 	
 	new_user_ref = users_ref.document(user_data['login'])
 	new_user_ref.set({
@@ -42,7 +42,7 @@ def addPokemon(pokemon_data):
 
 	new_pokemon_ref = pokemonList.document()
 	new_pokemon_ref.set({
-		'pokenonID': pokemon_data['pokemonID'],
+		'pokemonID': pokemon_data['pokemonID'],
 	})
 
 
@@ -52,25 +52,23 @@ def getPokemon(login):
 	query = users_ref.document(login).collection('pokemonList').get()
 
 	if query:
-		user_data = query[0].to_dict()
-		return user_data['pokemonList'], 200
+		user_data = [pokemon.to_dict() for pokemon in query]
+		return user_data, 200
 	else:
 		return {'error': 'User not found'}, 404
 	
 def updateNickname(pokemon_data):
-	# update users.pokemon_data['user'].pokemonList with the pokemonID
 	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
-
 	query = pokemonList.where('pokemonID', '==', pokemon_data['pokemonID']).limit(1).get()
 
 	if query:
-		pokemon_data = query[0].to_dict()
-		pokemon_data['nickname'] = pokemon_data['nickname']
-		pokemon_data.update(pokemon_data)
+		pokemon_doc = query[0].to_dict()
+		pokemon_doc['nickname'] = pokemon_data['nickname']
+		pokemon_doc.update(pokemon_data)
+
+		return {'message': 'Nickname updated successfully'}, 200
 	else:
 		return {'error': 'Pokemon not found'}, 404
-
-	return {'message': 'Nickname updated successfully'}, 200
 	
 def menu():
 	print('1 - Sign Up')
