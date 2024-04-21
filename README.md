@@ -18,7 +18,7 @@ O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores po
 - [Juan Marcos Braga Faria](https://github.com/juanmfaria) - Backend
 - [Kaique Oliveira](https://github.com/kaiqueoliveir0) - Frontend
 - [Lucas Almeida Santos de Souza](https://github.com/zzzluquinhas) - Fullstack
-- [Rodrigo Sales Nascimento](https://github.com/rodrigo-sales) - Backend
+- [Rodrigo Sales Nascimento](https://github.com/rodrigo-salesn) - Backend
 
 ## Tecnologias:
 - API pokéAPI para coletar informações dos pokémon existentes no jogo.
