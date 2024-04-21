@@ -6,7 +6,7 @@ from firebase_admin import credentials, firestore
 app = Flask(__name__)
 
 # Certifique-se de substituir "path/to/serviceAccountKey.json" pelo caminho real para o arquivo de chave de serviço que você baixou do console do Firebase.
-cred = credentials.Certificate("path/to/serviceAccountKey.json")
+cred = credentials.Certificate("./serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
