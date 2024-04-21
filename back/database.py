@@ -37,7 +37,6 @@ def checkUserCredentials(login, password):
 
 	
 def addPokemonToList(pokemon_data):
-	# update users.pokemon_data['user'].pokemonList collection with a new document containing the pokemonID
 	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
 
 	new_pokemon_ref = pokemonList.document()
