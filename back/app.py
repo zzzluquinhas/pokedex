@@ -14,16 +14,17 @@ usersReference = db.collection('users')
 #Criar usuário
 @app.route('/createUser', methods=['POST'])
 def createNewUser():
-	userData = request.json
+	user = request.args.get('user')
+	password = request.args.get('password')
 
-	query = usersReference.document(userData['login']).get()
+	query = usersReference.document(user).get()
 
 	if query.exists:
 		return {'error': 'User already exists'}, 400
 	
-	newUserReference = usersReference.document(userData['login'])
+	newUserReference = usersReference.document(user)
 	newUserReference.set({
-		'password': userData['password'],
+		'password': password,
 	})
 
 	return {'message': 'User created successfully'}, 201
@@ -31,7 +32,7 @@ def createNewUser():
 #Retornar usuário
 @app.route('/getUser', methods=['GET'])
 def checkUserCredentials():
-	login = request.args.get('login')
+	login = request.args.get('user')
 	password = request.args.get('password')
 
 	userDoc = usersReference.document(login).get()
@@ -49,13 +50,14 @@ def checkUserCredentials():
 #Adicionar Pokemon
 @app.route('/createPokemon', methods=['POST'])
 def addPokemonToList():
-	pokemonData = request.json
+	user = request.args.get('user')
+	pokemonID = request.args.get('pokemonID')
 
-	pokemonList = usersReference.document(pokemonData['user']).collection('pokemonList')
+	pokemonList = usersReference.document(user).collection('pokemonList')
 
 	newPokemonReference = pokemonList.document()
 	newPokemonReference.set({
-		'pokemonID': pokemonData['pokemonID'],
+		'pokemonID': pokemonID,
 	})
 
 	return {'message': 'Pokemon saved successfully'}, 201
@@ -63,9 +65,9 @@ def addPokemonToList():
 #Retornar pokemon de um usuário
 @app.route('/getPokemons', methods=['GET'])
 def getUserPokemons():
-	userId = request.args.get('userId')
+	user = request.args.get('user')
 
-	query = usersReference.document(userId).collection('pokemonList').get()
+	query = usersReference.document(user).collection('pokemonList').get()
 
 	if query:
 		userData = [pokemon.to_dict() for pokemon in query]
@@ -77,12 +79,15 @@ def getUserPokemons():
 @app.route('/renamePokemon', methods=['POST'])
 def renamePokemon():
 	pokemonData = request.json
+	user = request.args.get('user')
+	pokemonId = request.args.get('pokemonId')
+	nickname = request.args.get('nickname')
 
-	pokemonReference = usersReference.document(pokemonData['user']).collection('pokemonList').document(pokemonData['pokemonID'])
+	pokemonReference = usersReference.document(user).collection('pokemonList').document(pokemonId)
 
 	if pokemonReference.get().exists:
 		pokemonReference.update({
-			'nickname': pokemonData['nickname'],
+			'nickname': nickname,
 		})
 		return {'message': 'Nickname updated successfully'}, 200
 	else:
