@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import firebase_admin
 from classes import User, Pokemon
 from firebase_admin import credentials, firestore
+from database import createNewUser, checkUserCredentials, addPokemonToList, getUserPokemons, renamePokemon
 
 app = Flask(__name__)
 
@@ -15,69 +16,83 @@ pokemon_ref = db.collection('pokemon')
 #Criar usuário
 @app.route('/createUser', methods=['POST'])
 def createNewUser():
-    user_data = request.json
+	user_data = request.json
 
-    query = users_ref.where('login', '==', user_data['login']).limit(1).get()
+	query = users_ref.document(user_data['login']).get()
 
-    if query:
-        return jsonify({'error': 'User already exists'}), 400   #TODO user versus password error
-    
-    new_user_ref = users_ref.document()
-    new_user_ref.set({
-        'login': user_data['login'],
-        'password': user_data['password'],
-    })
+	if query:
+		return {'error': 'User already exists'}, 400
+	
+	new_user_ref = users_ref.document(user_data['login'])
+	new_user_ref.set({
+		'password': user_data['password'],
+	})
 
-    return jsonify({'message': 'User created successfully'}), 201
+	return {'message': 'User created successfully'}, 201
 
 #Retornar usuário
 @app.route('/getUser', methods=['GET'])
 def checkUserCredentials():
-    login = request.args.get('login')
-    password = request.args.get('password')
+	login = request.args.get('login')
+	password = request.args.get('password')
 
-    query = users_ref.where('login', '==', login).where('password', '==', password).limit(1).get()
+	user_doc = users_ref.document(login).get()
+	
+	if not user_doc.exists:
+		return {'error': 'User not found'}, 404
+	
+	user_data = user_doc.to_dict()
 
-    if query:
-        user_data = query[0].to_dict()
-        return jsonify(user_data), 200
-    else:
-        return jsonify({'error': 'User not found'}), 404
+	if user_data['password'] == password:
+		return {'message': 'User logged in successfully'}, 200
+	else:
+		return {'error': 'Invalid password'}, 401
 
 #Adicionar Pokemon
 @app.route('/createPokemon', methods=['POST'])
 def addPokemonToList():
-    pokemon_data = request.json
+	pokemon_data = request.json
 
-    new_pokemon_ref = pokemon_ref.document()
-    new_pokemon_ref.set({   #TODO verificar se usuário existe e está logado
-        'user': pokemon_data['user'],   # usuário deve estar logado (e com token válido?)
-        'pokemonNumber': pokemon_data['pokemonNumber'],
-        'name': pokemon_data['name'],
-        'nickname': pokemon_data['nickname'],
-    })
+	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
 
-    return jsonify({'message': 'Pokemon saved successfully'}), 201
+	new_pokemon_ref = pokemonList.document()
+	new_pokemon_ref.set({
+		'pokemonID': pokemon_data['pokemonID'],
+	})
+
+
+	return {'message': 'Pokemon saved successfully'}, 201
 
 #Retornar pokemon de um usuário
 @app.route('/getPokemons', methods=['GET'])
 def getUserPokemons():
-    user_id = request.args.get('user_id')
+	user_id = request.args.get('user_id')
 
-    query = pokemon_ref.where('user', '==', user_id).get()
+	query = users_ref.document(user_id).collection('pokemonList').get()
 
-    pokemon_list = []
-
-    for pokemon in query:
-        pokemon_data = pokemon.to_dict()
-        pokemon_list.append(pokemon_data)
-
-    return jsonify(pokemon_list), 200
+	if query:
+		user_data = [pokemon.to_dict() for pokemon in query]
+		return user_data, 200
+	else:
+		return {'error': 'User not found'}, 404
 
 #Mudar o nickname do Pokémon
 @app.route('/renamePokemon', methods=['GET'])
 def renamePokemon():
-    
+	pokemon_data = request.json
+
+	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
+	query = pokemonList.where('pokemonID', '==', pokemon_data['pokemonID']).limit(1).get()
+
+	if query:
+		pokemon_doc = query[0].to_dict()
+		pokemon_doc['nickname'] = pokemon_data['nickname']
+		pokemon_doc.update(pokemon_data)
+
+		return {'message': 'Nickname updated successfully'}, 200
+	else:
+		return {'error': 'Pokemon not found'}, 404
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(debug=True)
