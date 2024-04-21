@@ -11,7 +11,6 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 users_ref = db.collection('users')
-pokemon_ref = db.collection('pokemon')
 
 #Criar usuário
 @app.route('/createUser', methods=['POST'])
