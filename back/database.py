@@ -1,0 +1,112 @@
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+cred = credentials.Certificate("back/serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+users_ref = db.collection('users')
+
+def signUpUser(user_data):
+
+	query = users_ref.document(user_data['login']).get()
+
+	if query:
+		{'error': 'User already exists'}, 400
+	
+	new_user_ref = users_ref.document(user_data['login'])
+	new_user_ref.set({
+		'password': user_data['password'],
+	})
+
+	return {'message': 'User created successfully'}, 201
+
+def loginUser(login, password):
+
+	user_doc = users_ref.document(login).get()
+	
+	if not user_doc.exists:
+		return {'error': 'User not found'}, 404
+	
+	user_data = user_doc.to_dict()
+
+	if user_data['password'] == password:
+		return {'message': 'User logged in successfully'}, 200
+	else:
+		return {'error': 'Invalid password'}, 401
+
+	
+def addPokemon(pokemon_data):
+	# update users.pokemon_data['user'].pokemonList collection with a new document containing the pokemonID
+	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
+
+	new_pokemon_ref = pokemonList.document()
+	new_pokemon_ref.set({
+		'pokenonID': pokemon_data['pokemonID'],
+	})
+
+
+	return {'message': 'Pokemon saved successfully'}, 201
+
+def getPokemon(login):
+	query = users_ref.document(login).collection('pokemonList').get()
+
+	if query:
+		user_data = query[0].to_dict()
+		return user_data['pokemonList'], 200
+	else:
+		return {'error': 'User not found'}, 404
+	
+def updateNickname(pokemon_data):
+	# update users.pokemon_data['user'].pokemonList with the pokemonID
+	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
+
+	query = pokemonList.where('pokemonID', '==', pokemon_data['pokemonID']).limit(1).get()
+
+	if query:
+		pokemon_data = query[0].to_dict()
+		pokemon_data['nickname'] = pokemon_data['nickname']
+		pokemon_data.update(pokemon_data)
+	else:
+		return {'error': 'Pokemon not found'}, 404
+
+	return {'message': 'Nickname updated successfully'}, 200
+	
+def menu():
+	print('1 - Sign Up')
+	print('2 - Login')
+	print('3 - Add Pokemon')
+	print('4 - Get Pokemon')
+	print('5 - Update Nickname')
+	print('6 - Exit')
+
+	input_option = input('Choose an option: ')
+
+	if input_option == '1':
+		login = input('Login: ')
+		password = input('Password: ')
+		log = signUpUser({'login': login, 'password': password})
+	elif input_option == '2':
+		login = input('Login: ')
+		password = input('Password: ')
+		log = loginUser(login, password)
+	elif input_option == '3':
+		pokemonID = input('PokemonID: ')
+		user = input('User: ')
+		log = addPokemon({'pokemonID': pokemonID, 'user': user})
+	elif input_option == '4':
+		login = input('Login: ')
+		log = getPokemon(login)
+	elif input_option == '5':
+		pokemonID = input('PokemonID: ')
+		user = input('User: ')
+		nickname = input('Nickname: ')
+		log = updateNickname({'pokemonID': pokemonID, 'user': user, 'nickname': nickname})
+	elif input_option == '6':
+		return
+	
+	print(log)
+	
+	menu()
+
+menu()
