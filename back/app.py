@@ -80,14 +80,12 @@ def getUserPokemons():
 def renamePokemon():
 	pokemon_data = request.json
 
-	pokemonList = users_ref.document(pokemon_data['user']).collection('pokemonList')
-	query = pokemonList.where('pokemonID', '==', pokemon_data['pokemonID']).limit(1).get()
+	pokemon_ref = users_ref.document(pokemon_data['user']).collection('pokemonList').document(pokemon_data['pokemonID'])
 
-	if query:
-		pokemon_doc = query[0].to_dict()
-		pokemon_doc['nickname'] = pokemon_data['nickname']
-		pokemon_doc.update(pokemon_data)
-
+	if pokemon_ref.get().exists:
+		pokemon_ref.update({
+			'nickname': pokemon_data['nickname'],
+		})
 		return {'message': 'Nickname updated successfully'}, 200
 	else:
 		return {'error': 'Pokemon not found'}, 404
