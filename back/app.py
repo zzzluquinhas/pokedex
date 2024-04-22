@@ -9,70 +9,90 @@ cred = credentials.Certificate("./serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
-users_ref = db.collection('users')
-pokemon_ref = db.collection('pokemon')
+usersReference = db.collection('users')
 
 #Criar usuário
 @app.route('/createUser', methods=['POST'])
-def create_user():
-    user_data = request.json
+def createNewUser():
+	user = request.args.get('user')
+	password = request.args.get('password')
 
-    query = users_ref.where('login', '==', user_data['login']).limit(1).get()
+	query = usersReference.document(user).get()
 
-    if query:
-        return jsonify({'error': 'User already exists'}), 400   #TODO user versus password error
-    
-    new_user_ref = users_ref.document()
-    new_user_ref.set({
-        'login': user_data['login'],
-        'password': user_data['password'],
-    })
+	if query.exists:
+		return {'error': 'User already exists'}, 400
+	
+	newUserReference = usersReference.document(user)
+	newUserReference.set({
+		'password': password,
+	})
 
-    return jsonify({'message': 'User created successfully'}), 201
+	return {'message': 'User created successfully'}, 201
 
 #Retornar usuário
 @app.route('/getUser', methods=['GET'])
-def get_user():
-    login = request.args.get('login')
-    password = request.args.get('password')
+def checkUserCredentials():
+	login = request.args.get('user')
+	password = request.args.get('password')
 
-    query = users_ref.where('login', '==', login).where('password', '==', password).limit(1).get()
+	userDoc = usersReference.document(login).get()
+	
+	if not userDoc.exists:
+		return {'error': 'User not found'}, 404
+	
+	userData = userDoc.to_dict()
 
-    if query:
-        user_data = query[0].to_dict()
-        return jsonify(user_data), 200
-    else:
-        return jsonify({'error': 'User not found'}), 404
+	if userData['password'] == password:
+		return {'message': 'User logged in successfully'}, 200
+	else:
+		return {'error': 'Invalid password'}, 401
 
 #Adicionar Pokemon
 @app.route('/createPokemon', methods=['POST'])
-def create_pokemon():
-    pokemon_data = request.json
+def addPokemonToList():
+	user = request.args.get('user')
+	pokemonID = request.args.get('pokemonID')
 
-    new_pokemon_ref = pokemon_ref.document()
-    new_pokemon_ref.set({   #TODO verificar se usuário existe e está logado
-        'user': pokemon_data['user'],   # usuário deve estar logado (e com token válido?)
-        'pokemonNumber': pokemon_data['pokemonNumber'],
-        'name': pokemon_data['name'],
-        'nickname': pokemon_data['nickname'],
-    })
+	pokemonList = usersReference.document(user).collection('pokemonList')
 
-    return jsonify({'message': 'Pokemon saved successfully'}), 201
+	newPokemonReference = pokemonList.document()
+	newPokemonReference.set({
+		'pokemonID': pokemonID,
+	})
+
+	return {'message': 'Pokemon saved successfully'}, 201
 
 #Retornar pokemon de um usuário
 @app.route('/getPokemons', methods=['GET'])
-def get_user_pokemon():
-    user_id = request.args.get('user_id')
+def getUserPokemons():
+	user = request.args.get('user')
 
-    query = pokemon_ref.where('user', '==', user_id).get()
+	query = usersReference.document(user).collection('pokemonList').get()
 
-    pokemon_list = []
+	if query:
+		userData = [pokemon.to_dict() for pokemon in query]
+		return userData, 200
+	else:
+		return {'error': 'User not found'}, 404
 
-    for pokemon in query:
-        pokemon_data = pokemon.to_dict()
-        pokemon_list.append(pokemon_data)
+#Mudar o nickname do Pokémon
+@app.route('/renamePokemon', methods=['POST'])
+def renamePokemon():
+	pokemonData = request.json
+	user = request.args.get('user')
+	pokemonId = request.args.get('pokemonId')
+	nickname = request.args.get('nickname')
 
-    return jsonify(pokemon_list), 200
+	pokemonReference = usersReference.document(user).collection('pokemonList').document(pokemonId)
+
+	if pokemonReference.get().exists:
+		pokemonReference.update({
+			'nickname': nickname,
+		})
+		return {'message': 'Nickname updated successfully'}, 200
+	else:
+		return {'error': 'Pokemon not found'}, 404
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(debug=True)
