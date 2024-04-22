@@ -2,9 +2,11 @@
 
 ## Escopo do sistema:
 Os jogos eletrônicos da franquia Pokémon tem conquistado um público vasto e apaixonado ao longo dos anos, demonstrando seu apelo universal. O gerenciamento de times de Pokémon desempenha um papel crucial na estratégia dos jogadores que desejam participar de torneios de batalhas online e que almejam elevar a sua experiência de jogo.
-O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores possam organizar e gerenciar seus times de batalha de forma eficaz. Com a capacidade de cadastrar até seis Pokémon em um time, os usuários podem criar estratégias para enfrentar desafios diversos oferecidos pelo catálogo de jogos da franquia.
+O sistema desenvolvido oferece uma plataforma intuitiva para que os jogadores possam consultar as habilidades e características de cada Pokémon, organizar e gerenciar seus Pokémons capturados em sua pokédex ou em times de batalha de forma eficaz. Com a capacidade de cadastrar até seis Pokémon em um time, os usuários podem criar estratégias para enfrentar desafios diversos oferecidos pelo catálogo de jogos da franquia.
 
 ## Funcionalidades Principais:
+- Catálogo informativo de todos os Pokémons:
+  - Os usuários podem pesquisar e navegar pela lista com todos os Pokémons, e visualizar seus atributos como força de ataque, tipo elemental, entre outros.
 - Cadastro de Pokémon:
   - Os usuários podem adicionar Pokémon ao seu time através da nossa integração com a API pokéAPI. Basta especificar o nome ou número do Pokémon desejado, e o sistema irá recuperar automaticamente os dados relevantes, como tipo, habilidades e estatísticas.
 - Cadastro de Times:
