@@ -32,10 +32,11 @@ export function MyPokemonPage(props){
   
     const indexOfLastPokemon = currentPage * pokemonPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonPerPage;
-    const currentPokemon = pokemonPages.slice(
+    
+    const currentPokemon = ((indexOfFirstPokemon || indexOfLastPokemon) == 0) ? pokemonPages.slice(
       indexOfFirstPokemon,
       indexOfLastPokemon
-    );
+    ) : [];
   
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
