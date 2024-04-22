@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 import firebase_admin
-from classes import User, Pokemon
 from firebase_admin import credentials, firestore
 from flask_cors import CORS
 
@@ -58,9 +57,9 @@ def addPokemonToList():
 
 	pokemonList = usersReference.document(user).collection('pokemonList')
 
-	newPokemonReference = pokemonList.document()
+	newPokemonReference = pokemonList.document(pokemonID)
 	newPokemonReference.set({
-		'pokemonID': pokemonID,
+		'pokemonID': int(pokemonID),
 	})
 
 	return {'message': 'Pokemon saved successfully'}, 201
@@ -81,7 +80,6 @@ def getUserPokemons():
 #Mudar o nickname do Pokémon
 @app.route('/renamePokemon', methods=['POST'])
 def renamePokemon():
-	pokemonData = request.json
 	user = request.args.get('user')
 	pokemonId = request.args.get('pokemonId')
 	nickname = request.args.get('nickname')
