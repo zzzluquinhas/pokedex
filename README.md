@@ -1,4 +1,7 @@
-# $${\color{red}P \color{orange}o \color{yellow}Q \color{green}u \color{blue}e \color{purple}e \color{gray}r \color{brown}D \color{lightblue}e \color{pink}x}$$
+<div style="display: flex; justify-content: center; align-items: center;">
+	<img src="logo/logo_image.png" alt="drawing" height="100"/>
+	<img src="logo/logo_name.png" alt="drawing" height="80"/>
+</div>
 
 ## Escopo do sistema:
 Os jogos eletrônicos da franquia Pokémon tem conquistado um público vasto e apaixonado ao longo dos anos, demonstrando seu apelo universal. O gerenciamento de times de Pokémon desempenha um papel crucial na estratégia dos jogadores que desejam participar de torneios de batalhas online e que almejam elevar a sua experiência de jogo.
