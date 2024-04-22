@@ -69,7 +69,7 @@ def getUserPokemons():
 
 	query = usersReference.document(user).collection('pokemonList').get()
 
-	if query.exists:
+	if query	:
 		userData = [pokemon.to_dict() for pokemon in query]
 		return userData, 200
 	else:
@@ -79,10 +79,10 @@ def getUserPokemons():
 @app.route('/renamePokemon', methods=['POST'])
 def renamePokemon():
 	user = request.args.get('user')
-	pokemonId = request.args.get('pokemonId')
+	pokemonID = request.args.get('pokemonID')
 	nickname = request.args.get('nickname')
 
-	pokemonReference = usersReference.document(user).collection('pokemonList').document(pokemonId)
+	pokemonReference = usersReference.document(user).collection('pokemonList').document(pokemonID)
 
 	if pokemonReference.get().exists:
 		pokemonReference.update({
