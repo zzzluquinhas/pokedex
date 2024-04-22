@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 import firebase_admin
-from classes import User, Pokemon
 from firebase_admin import credentials, firestore
 
 app = Flask(__name__)
@@ -78,7 +77,6 @@ def getUserPokemons():
 #Mudar o nickname do Pokémon
 @app.route('/renamePokemon', methods=['POST'])
 def renamePokemon():
-	pokemonData = request.json
 	user = request.args.get('user')
 	pokemonId = request.args.get('pokemonId')
 	nickname = request.args.get('nickname')
