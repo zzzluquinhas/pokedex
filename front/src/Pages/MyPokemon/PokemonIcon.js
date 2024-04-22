@@ -8,7 +8,7 @@ export function PokemonIcon(props){
 
     useEffect(() => {
         const fetchPokemonData = async () => {
-            setPokemonImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.pokemonNumber}.png`);
+            setPokemonImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.pokemonNumber.replace(/^0+/, '')}.png`);
         };
 
         fetchPokemonData();

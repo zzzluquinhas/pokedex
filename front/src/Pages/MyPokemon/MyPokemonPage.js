@@ -10,34 +10,26 @@ export function MyPokemonPage(props){
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemonPerPage] = useState(30);
     const [sidebarWidth, setSidebarWidth] = useState("50px"); // Estado para armazenar a largura da barra lateral
-    const [userInput, setUserInput] = useState("");
   
     useEffect(() => {
-      const fetchPokemonData = async (userInput) => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokedex/national`);
-        const data = await response.json();
-        
-        function filterPokemonEntries(pokemonEntries, userInput) {
-          return pokemonEntries.filter(entry => {
-              return (
-                  entry.entry_number.toString().includes(userInput) ||
-                  entry.pokemon_species.name.includes(userInput)
-              );
+      const fetchPokemonData = async () => {
+        const response = await fetch(`http://localhost:5000/getPokemons?user=${props.user}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
           });
-      }
-        setPokemonPages(data.pokemon_entries.filter(entry => {
-          return (
-              entry.entry_number.toString().includes(userInput) ||
-              entry.pokemon_species.name.includes(userInput)
-          );
-      }));
+        const data = await response.json();
+        console.log(data);
+        
+        setPokemonPages(data);
   
       };
   
       setCurrentPage(1);
   
-      fetchPokemonData(userInput);
-    }, [userInput]);
+      fetchPokemonData();
+    }, []);
   
     const indexOfLastPokemon = currentPage * pokemonPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonPerPage;
@@ -48,15 +40,10 @@ export function MyPokemonPage(props){
   
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
-    const handleUserInputChange = (inputValue) => {
-      setUserInput(inputValue);
-    };
-
     return(
         <>
             <ProfileSideBar setSidebarWidth={setSidebarWidth} />
             <div className='my-pokemon-container' style={{ marginLeft: sidebarWidth }}>
-                <PokedexSearchBar onSubmit={handleUserInputChange} />
                 <Pagination
                 postsPerPage={pokemonPerPage}
                 totalPosts={pokemonPages.length}
@@ -68,7 +55,7 @@ export function MyPokemonPage(props){
                 <div className='my-pokemon-list'>
                     {currentPokemon.map(pokemon => (
                         <div key={pokemon.entry_number} className="pokemon-grid-item">
-                            <PokemonIcon pokemonNumber={pokemon.entry_number} pokemonName={pokemon.pokemon_species.name}></PokemonIcon>
+                            <PokemonIcon pokemonNumber={pokemon.pokemonID} pokemonName={""}></PokemonIcon>
                         </div>
                     ))}        
                 </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { GoSidebarExpand, GoSidebarCollapse } from "react-icons/go";
 import { CgProfile, CgPokemon } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
@@ -28,14 +29,14 @@ export function ProfileSideBar({ setSidebarWidth, userName }) {
         <CgProfile />
         {openSideBar && <label>{userName}</label>}
       </div>
-      <div className="pokedex-tab">
+      <Link to="/pokedex" className="pokedex-tab">
         <FaSearch />
         {openSideBar && <label>Pokedex</label>}
-      </div>
-      <div className="my-pokemon-tab">
+      </Link>
+      <Link to="/pokemon" className="my-pokemon-tab">
         <CgPokemon />
         {openSideBar && <label>My Pokemon</label>}
-      </div>
+      </Link>
     </div>
   );
 }
