@@ -1,7 +1,6 @@
 import './MyPokemonPage.css'
 import React, { useState, useEffect } from 'react';
 import { ProfileSideBar } from '../ProfileSideBar/ProfileSideBar';
-import { PokedexSearchBar } from '../PokedexSearch/PokedexSearchBar';
 import Pagination from '../../assets/components/Pagination';
 import { PokemonIcon } from './PokemonIcon';
 
@@ -55,7 +54,7 @@ export function MyPokemonPage(props){
                 <div className='my-pokemon-list'>
                     {currentPokemon.map(pokemon => (
                         <div key={pokemon.entry_number} className="pokemon-grid-item">
-                            <PokemonIcon pokemonNumber={pokemon.pokemonID} pokemonName={""}></PokemonIcon>
+                            <PokemonIcon pokemonNumber={pokemon.pokemonID} pokemonName={pokemon.nickname} user={props.user}></PokemonIcon>
                         </div>
                     ))}        
                 </div>
