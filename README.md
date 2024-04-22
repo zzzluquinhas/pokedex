@@ -92,3 +92,7 @@ Tarefas e responsáveis:
 ![DiagramaClasses](umls/DiagramaClasses.png)
 
 ### Diagrama de Atividades
+
+Diagrama que demonstra o processo de pesquisa de pokémon. 
+
+![DiagramaAtividades](umls/DiagramaAtividades.png)
