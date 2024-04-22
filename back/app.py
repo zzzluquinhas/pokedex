@@ -54,9 +54,9 @@ def addPokemonToList():
 
 	pokemonList = usersReference.document(user).collection('pokemonList')
 
-	newPokemonReference = pokemonList.document()
+	newPokemonReference = pokemonList.document(pokemonID)
 	newPokemonReference.set({
-		'pokemonID': pokemonID,
+		'pokemonID': int(pokemonID),
 	})
 
 	return {'message': 'Pokemon saved successfully'}, 201
