@@ -18,7 +18,7 @@ export default function App() {
   const authenticatedRoutes = (
     <>
     <Routes>
-      <Route path="/" element={<Navigate to="/pokedex" />} />
+      <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
       <Route path="/pokedex" element={<PokedexSearchPage user={user}  />} />
       <Route path="/pokemon" element={<MyPokemonPage user={user} />} />
     </Routes>

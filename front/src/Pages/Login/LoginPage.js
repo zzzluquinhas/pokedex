@@ -3,10 +3,12 @@ import { SignUpModal } from './SignUpModal';
 import { toast } from 'react-toastify';
 import myLogo from '../../assets/icons/logo.png';
 import './LoginPage.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export function LoginPage({ onLogin }) {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent form submission
@@ -28,6 +30,8 @@ export function LoginPage({ onLogin }) {
     .then(data => {
       setUser(username); // Set the user state with received data
       onLogin(username); // Call the onLogin function with user data
+      toast.success('Login successful');
+      navigate('/pokedex'); 
     })
     .catch(error => {
       console.error('Error logging in:', error.message); // Handle errors
