@@ -1,8 +1,10 @@
 from flask import Flask, request
 import firebase_admin
 from firebase_admin import credentials, firestore
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 cred = credentials.Certificate("./serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
@@ -33,6 +35,7 @@ def createNewUser():
 def checkUserCredentials():
 	login = request.args.get('user')
 	password = request.args.get('password')
+	print('tamo aqui carai')
 
 	userDoc = usersReference.document(login).get()
 	

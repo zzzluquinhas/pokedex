@@ -4,7 +4,7 @@ import { ProfileSideBar } from "../ProfileSideBar/ProfileSideBar";
 import { PokedexSearchBar } from "./PokedexSearchBar";
 import Pagination from "../../assets/components/Pagination";
 
-export function PokedexSearchPage() {
+export function PokedexSearchPage(props) {
   const [pokemonPages, setPokemonPages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,9 +54,11 @@ export function PokedexSearchPage() {
     setUserInput(inputValue);
   };
 
+  console.log(props.user);
+
   return (
     <>
-      <ProfileSideBar setSidebarWidth={setSidebarWidth} />
+      <ProfileSideBar setSidebarWidth={setSidebarWidth} userName={props.user}/>
       <div className="page-container" style={{ marginLeft: sidebarWidth }}>
         <PokedexSearchBar onSubmit={handleUserInputChange} />
         <Pagination
@@ -64,7 +66,7 @@ export function PokedexSearchPage() {
           totalPosts={pokemonPages.length}
           paginate={paginate}
         />
-        <PokedexSearchResult pokemonList={currentPokemon} loading={loading} />
+        <PokedexSearchResult pokemonList={currentPokemon} loading={loading} user={props.user}/>
       </div>
     </>
   );

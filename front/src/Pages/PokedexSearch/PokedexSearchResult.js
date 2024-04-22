@@ -5,6 +5,7 @@ import { PokemonInfoPage } from "../PokemonInfo/PokemonInfoPage";
 
 
 export function PokedexSearchResult(props){
+    console.log(props.user)
     if(props.loading)
     return(
             <div>Loading...</div>
@@ -13,7 +14,7 @@ export function PokedexSearchResult(props){
         <div className='pokemon-container'> 
             {props.pokemonList.map(pokemon => (
                 <div key={pokemon.entry_number} className="pokemon-grid-item">
-                    <PokedexSearchItem pokemonNumber={pokemon.entry_number} pokemonName={pokemon.pokemon_species.name}></PokedexSearchItem>
+                    <PokedexSearchItem pokemonNumber={pokemon.entry_number} pokemonName={pokemon.pokemon_species.name} user={props.user}></PokedexSearchItem>
                 </div>
             ))}
         </div>
