@@ -2,35 +2,37 @@ import React, { useState } from 'react';
 import { SignUpModal } from './SignUpModal';
 import './LoginPage.css';
 
-export function LoginPage(){
+export function LoginPage({ onLogin }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent form submission
     const username = event.target.uname.value;
     const password = event.target.psw.value;
-
-    // Send GET request to backend
-    fetch(`localhost:5000/getUser?login=${username}&password=${password}`, { // Changed 'username' to 'login'
+    fetch(`http://localhost:5000/getUser?user=${username}&password=${password}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-        // Add any other headers if needed
       },
-      // Add any request body if needed
     })
     .then(response => {
       if (response.ok) {
-        console.log(response);
+        return response.json(); // Parse response JSON
       } else {
-        console.log("TOMA NO CUUUU");
+        throw new Error('Invalid credentials'); // Throw error for non-OK responses
       }
     })
+    .then(data => {
+      console.log(data); // Handle successful response data
+      setUser(username); // Set the user state with received data
+      onLogin(username); // Call the onLogin function with user data
+    })
     .catch(error => {
-      console.log("CARALHOO");
-      console.log(error);
+      console.error('Error logging in:', error.message); // Handle errors
     });
   };
+  
 
   return (
     <>  

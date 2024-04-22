@@ -6,7 +6,7 @@ import { PokemonProfile } from './PokemonProfile'
 import React, { useState, useEffect } from 'react';
 
 
-export function PokemonInfoPage({pkmNumber, isOpen, setInfoOpen}){
+export function PokemonInfoPage({user, pkmNumber, isOpen, setInfoOpen}){
     const [pokemonImage, setPokemonImage] = useState([]);
     const [pokemonType, setPokemonType] = useState([]);
     const [pokemonName, setPokemonName] = useState([]);
@@ -14,6 +14,33 @@ export function PokemonInfoPage({pkmNumber, isOpen, setInfoOpen}){
     const [pokemonAbilities, setPokemonAbilities] = useState([]);
     const [pokemonStats, setPokemonStats] = useState([]);
     const [pokemonMoves, setPokemonMoves] = useState([]);
+
+    console.log(user);
+
+    const handleCreate = (event) => {
+        event.preventDefault(); // Prevent form submission
+        console.log(user);
+        console.log(pokemonNumber);
+        fetch(`http://localhost:5000/createPokemon?user=${user}&pokemonID=${pokemonNumber}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json(); // Parse response JSON
+          } else {
+            throw new Error('Invalid credentials'); // Throw error for non-OK responses
+          }
+        })
+        .then(data => {
+          console.log(data); // Handle successful response data
+        })
+        .catch(error => {
+          console.error('Error logging in:', error.message); // Handle errors
+        });
+      };
     
     useEffect(() => {
         const fetchPokemonData = async () => {
@@ -69,7 +96,7 @@ export function PokemonInfoPage({pkmNumber, isOpen, setInfoOpen}){
                         </div>
                     </div>
                     <div className="pokemon-info-page-add">
-                        <button className="pokemon-add-btn">ADD TO YOUR POKEMON LIST</button>
+                        <button className="pokemon-add-btn" onClick={handleCreate}>ADD TO YOUR POKEMON LIST</button>
                     </div>
                 </div>
             </div>

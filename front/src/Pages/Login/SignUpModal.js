@@ -3,10 +3,37 @@ import React from "react";
 import "./SignUpModal.css";
 
 export function SignUpModal({ isOpen, setSignUp }) { // Corrected function name
+
+  const handleSignUp = (event) => {
+    event.preventDefault(); // Prevent form submission
+    const username = event.target.username.value;
+    const password = event.target.psw.value;
+    fetch(`http://localhost:5000/createUser?user=${username}&password=${password}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Parse response JSON
+      } else {
+        throw new Error('Invalid credentials'); // Throw error for non-OK responses
+      }
+    })
+    .then(data => {
+      console.log(data); // Handle successful response data
+    })
+    .catch(error => {
+      console.error('Error logging in:', error.message); // Handle errors
+    });
+  };
+  
+
   if (isOpen) {
     return (
       <div className="sign-up-modal">
-        <form className="modal-content">
+        <form  onSubmit={handleSignUp} className="modal-content">
           <div className="container">
             <div className="top-bar">
               <h1>Sign Up</h1>
@@ -18,8 +45,6 @@ export function SignUpModal({ isOpen, setSignUp }) { // Corrected function name
             <label htmlFor="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required />
 
-            <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
             <button type="submit" className="signup-btn">Sign Up</button>
           </div>
         </form>

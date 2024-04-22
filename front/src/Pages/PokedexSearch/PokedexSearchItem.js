@@ -8,6 +8,7 @@ export function PokedexSearchItem(props){
     const [pokemonName, setPokemonName] = useState([]);
     const [pokemonNumber, setPokemonNumber] = useState([]);
     const [openInfo, setOpenInfo] = useState(false);
+    console.log(props.user);
 
     useEffect(() => {
         const fetchPokemonData = async () => {
@@ -54,7 +55,7 @@ export function PokedexSearchItem(props){
                     </div>
                 </div>
             </div>
-            <PokemonInfoPage pkmNumber={props.pokemonNumber} isOpen={openInfo} setInfoOpen={() => setOpenInfo(!openInfo)} ></PokemonInfoPage>
+            <PokemonInfoPage user={props.user} pkmNumber={props.pokemonNumber} isOpen={openInfo} setInfoOpen={() => setOpenInfo(!openInfo)} ></PokemonInfoPage>
         </div>
     )
 }
