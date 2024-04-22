@@ -57,6 +57,7 @@ def addPokemonToList():
 	newPokemonReference = pokemonList.document(pokemonID)
 	newPokemonReference.set({
 		'pokemonID': int(pokemonID),
+		'nickname': '',
 	})
 
 	return {'message': 'Pokemon saved successfully'}, 201
@@ -68,7 +69,7 @@ def getUserPokemons():
 
 	query = usersReference.document(user).collection('pokemonList').get()
 
-	if query:
+	if query.exists:
 		userData = [pokemon.to_dict() for pokemon in query]
 		return userData, 200
 	else:
