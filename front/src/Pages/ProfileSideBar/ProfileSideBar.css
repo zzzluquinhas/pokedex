@@ -2,7 +2,7 @@
 
 .profile-side-bar{
     width: 50px;
-    background-color: #f0f0f0;
+    background-color: var(--secondary);
     position: fixed;
     left: 0;
     top: 0;
@@ -13,11 +13,33 @@
     width: 300px;
 }
 
-.expand-tab, .profile-tab, .edit-data-tab, .pokedex-tab, .my-pokemon-tab, .my-teams-tab{
+.expand-tab, .profile-tab, .edit-data-tab, .pokedex-tab, .my-pokemon-tab, .my-teams-tab, .exit-tab{
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
     font-size: 24px;
 }
 
+.pokedex-tab, .my-pokemon-tab, .expand-tab, .exit-tab{
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+
+
+.expand-tab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--secondary);
+    width: 100%;
+}
+
+.pokedex-tab:hover, .expand-tab:hover, .my-pokemon-tab:hover, .exit-tab:hover{
+    background-color: var(--secondary-variant);
+}

@@ -3,6 +3,7 @@ import { PokemonStats } from './PokemonStats'
 import { PokemonMoves } from './PokemonMoves'
 import { PokemonAbilities } from './PokemonAbilities'
 import { PokemonProfile } from './PokemonProfile'
+import { toast } from 'react-toastify';
 import React, { useState, useEffect } from 'react';
 
 
@@ -36,9 +37,11 @@ export function PokemonInfoPage({user, pkmNumber, isOpen, setInfoOpen}){
         })
         .then(data => {
           console.log(data); // Handle successful response data
+          toast.success("Pokemon added into your Pokemon List");
         })
         .catch(error => {
           console.error('Error logging in:', error.message); // Handle errors
+          toast.error("Error adding Pokemon to your list");
         });
       };
     

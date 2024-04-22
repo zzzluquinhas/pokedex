@@ -1,6 +1,7 @@
 // SignUpModal.js
 import React from "react";
 import "./SignUpModal.css";
+import { toast } from 'react-toastify';
 
 export function SignUpModal({ isOpen, setSignUp }) { // Corrected function name
 
@@ -22,10 +23,11 @@ export function SignUpModal({ isOpen, setSignUp }) { // Corrected function name
       }
     })
     .then(data => {
-      console.log(data); // Handle successful response data
+      toast.success("New account created successfully!")
     })
     .catch(error => {
       console.error('Error logging in:', error.message); // Handle errors
+      toast.error('Error creating new account!'); // Error toast
     });
   };
   

@@ -1,4 +1,6 @@
 import "./NicknameModal.css"
+
+import { toast } from 'react-toastify';
 export function NicknameModal({ isOpen, setNickname, user, pokemonId, updateNickname }) { // Corrected function name
   const handleNickname = (event) => {
     event.preventDefault(); // Prevent form submission
@@ -19,9 +21,11 @@ export function NicknameModal({ isOpen, setNickname, user, pokemonId, updateNick
     .then(data => {
       console.log(data); // Handle successful response data
       updateNickname(nickname); // Update the nickname in PokemonIcon component
+      toast.success("Nickname updated");
     })
     .catch(error => {
       console.error('Error logging in:', error.message); // Handle errors
+      toast.error("Error updating nickname");
     });
   };
   

@@ -6,7 +6,24 @@
 }
 .poqueerdex-icon{
     width: 30%;
-    background-color: var(--primary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.poqueerdex-img{
+    height: 60px;
+}
+
+.poqueerdex-text{
+    height: 36px;
 }
 
 .search-bar{
@@ -22,7 +39,7 @@
 .search-pokemon{
     width:80%;
     height: 30px;
-    
+    font-family: "Kode Mono";
     box-shadow: inset #abacaf 0 0 0 2px;
     border: 0;
     background: rgba(0, 0, 0, 0);
@@ -51,10 +68,14 @@
     outline: 0;
     border: 0;
     cursor: pointer;
-    background-color: #4299e1;
+    background-color: var(--button);
     border-radius: 4px;
     padding: 8px 16px;
     font-size: 16px;
     color: white;
     line-height: 26px;
+}
+
+.submit-search:hover{
+    background-color: var(--button_hover);
 }
