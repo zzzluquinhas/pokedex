@@ -1,11 +1,14 @@
-import {PokedexSearchPage} from "./Pages/PokedexSearch/PokedexSearchPage"
-import { PokemonInfoPage } from "./Pages/PokemonInfo/PokemonInfoPage"
-import { ProfileSideBar } from "./Pages/ProfileSideBar/ProfileSideBar"
+import { LoginPage } from "./Pages/Login/LoginPage";
+import { MyPokemonPage } from "./Pages/MyPokemon/MyPokemonPage";
+import { PokedexSearchPage } from "./Pages/PokedexSearch/PokedexSearchPage";
+import { Routes, Route } from 'react-router-dom';
 
 export default function App(){
-  return(
-    <div>
-      <PokedexSearchPage></PokedexSearchPage>
-    </div>
-  )
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/pokedex" element={<PokedexSearchPage />} />
+      <Route path="/pokemon" element={<MyPokemonPage />} />
+    </Routes>
+  );
 }

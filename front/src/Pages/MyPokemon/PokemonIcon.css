@@ -1,0 +1,12 @@
+.pokemon-icon-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+.pokemon-icon-container:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}

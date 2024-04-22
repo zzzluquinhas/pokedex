@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { GoSidebarExpand, GoSidebarCollapse } from "react-icons/go";
 import { CgProfile, CgPokemon } from "react-icons/cg";
-import { FaUserEdit, FaSearch } from "react-icons/fa";
-import { AiOutlineTeam } from "react-icons/ai";
+import { FaSearch } from "react-icons/fa";
 
 import "./ProfileSideBar.css";
 
-export function ProfileSideBar({ setSidebarWidth }) {
+export function ProfileSideBar({ setSidebarWidth, userName }) {
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const handleToggleSidebar = () => {
     setOpenSideBar(!openSideBar);
   };
 
-  // Função para obter a largura atual da barra lateral
   const getSidebarWidth = () => {
     return openSideBar ? "300px" : "50px";
   };
@@ -28,18 +26,15 @@ export function ProfileSideBar({ setSidebarWidth }) {
       </button>
       <div className="profile-tab">
         <CgProfile />
-      </div>
-      <div className="edit-data-tab">
-        <FaUserEdit />
+        {openSideBar && <label>{userName}</label>}
       </div>
       <div className="pokedex-tab">
         <FaSearch />
+        {openSideBar && <label>Pokedex</label>}
       </div>
       <div className="my-pokemon-tab">
         <CgPokemon />
-      </div>
-      <div className="my-teams-tab">
-        <AiOutlineTeam />
+        {openSideBar && <label>My Pokemon</label>}
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
+import { NicknameModal } from './NicknameModal';
 import './PokemonIcon.css'
 import React, { useState, useEffect } from 'react';
 
 export function PokemonIcon(props){
     const [pokemonImage, setPokemonImage] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         const fetchPokemonData = async () => {
@@ -13,11 +15,14 @@ export function PokemonIcon(props){
     }, []);
 
     return (
-        <div className='pokemon-icon-container'>
-            <div className='pokemon-icon-image'>
-                <img className="pokemon-img" src={pokemonImage}></img>
+        <>
+            <div className='pokemon-icon-container' onClick={() => setIsOpen(true)}>
+                <div className='pokemon-icon-image'>
+                    <img className="pokemon-img" src={pokemonImage}></img>
+                </div>
+                <div className='pokemon-name'>{props.pokemonName}</div>
             </div>
-            <div className='pokemon-name'>{props.pokemonName}</div>
-        </div>
+            <NicknameModal isOpen={isOpen} setNickname={setIsOpen} /> {/* Corrected function name */}
+        </>
     )
 }

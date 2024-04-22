@@ -36,23 +36,24 @@ export function PokedexSearchItem(props){
     }, []);
     return(
         <div className="pokemon-item-wrapper">
-            {pokemonType.slice(0, 1).map(type => (
-                <div className="pokemon-img-wrapper" id={`${type.type.name}`}>
-                    <img className="pokemon-img" src={pokemonImage} width="180" height="180"></img>
-                </div>
-            ))}
-            <div className="pokemon-info-wrapper">
-                <div className="pokemon-number">Nº {pokemonNumber}</div>
-                <div className="pokemon-name">{pokemonName}</div>
-                <div className="pokemon-typing">
-                    {pokemonType.map(type => (
-                        <div class="pokemon-typing-item" id={`${type.type.name}`}>
-                            {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
-                        </div>
-                    ))}
+            <div className='pokemon-item-btn' onClick={() => setOpenInfo(true)}>
+                {pokemonType.slice(0, 1).map(type => (
+                    <div className="pokemon-img-wrapper" id={`${type.type.name}`}>
+                        <img className="pokemon-img" src={pokemonImage} width="180" height="180"></img>
+                    </div>
+                ))}
+                <div className="pokemon-info-wrapper">
+                    <div className="pokemon-number">Nº {pokemonNumber}</div>
+                    <div className="pokemon-name">{pokemonName}</div>
+                    <div className="pokemon-typing">
+                        {pokemonType.map(type => (
+                            <div class="pokemon-typing-item" id={`${type.type.name}`}>
+                                {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-            <button onClick={() => setOpenInfo(true)}>Abrir modal</button>
             <PokemonInfoPage pkmNumber={props.pokemonNumber} isOpen={openInfo} setInfoOpen={() => setOpenInfo(!openInfo)} ></PokemonInfoPage>
         </div>
     )
