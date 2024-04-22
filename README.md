@@ -84,6 +84,44 @@ Tarefas e responsáveis:
 
 ## Versão Revisada do Backlog da Sprint:
 
+História 1: Como usuário, eu gostaria de ter uma conta na aplicação.
+
+Tarefas e responsáveis:
+- Criar conta no banco de dados Firebase [Lucas]
+- Configurar credencias para acesso ao banco [Lucas]
+- Mapear a classe “Usuário” no banco de dados [Juan]
+- Implementar a configuração base de uma API Flask [Rodrigo]
+- Implementar endpoints com métodos de comunicação com o banco de dados para salvar e buscar usuários [Rodrigo]
+- Padronizar métodos de acesso com o mapeamento feito no banco [Juan]
+- Desenvolver interface inicial de login do usuário [Lucas]
+- Adicionar integração da interface de usuário à tela inicial (botão de login antes de entrar, nome depois de entrar) [Kaique]
+- Configurar integração da interface de usuário com a API Flask [Kaique]
+
+História 2: Como usuário, eu gostaria de saber mais sobre um pokémon específico.
+
+Tarefas e responsáveis:
+- Desenvolver lógica para requisição de dados da PokéAPI [Juan + Rodrigo]
+- Mapear informações de um pokémon que serão usadas no sistema [Rodrigo]
+- Configurar mecanismos de busca [Lucas + Juan]
+- Desenvolver tela inicial com caixa de busca [Lucas]
+- Desenvolver tela com resultados da busca [Kaique]
+- Desenvolver tela de exibição das informações de um Pokémon [Kaique]
+
+História 3: Como usuário, eu gostaria de adicionar um pokémon à minha conta.
+
+Tarefas e responsáveis:
+- Mapear a classe “MyPokemon” no banco de dados [Rodrigo]
+- Implementar endpoints com métodos de comunicação com o banco de dados para salvar e buscar pokémon de um usuário [Juan]
+- Desenvolver tela para exibição de lista de pokémon de cada usuário [Kaique]
+- Adicionar à tela de exibição de informações de um pokémon um botão para adicionar o pokémon a lista do usuário [Lucas]
+- Configurar integração das interfaces desenvolvidas com a API Flask [Kaique + Lucas]
+
+História 4: Como usuário, eu gostaria de nomear um pokémon que gosto muito.
+
+Tarefas e responsáveis:
+- Implementar endpoint com método de comunicação com o banco de dados para salvar o nickname do pokémon de um usuário [Rodrigo + Juan]
+- Criar um botão na tela de informações do pokémon do usuário para alterar o nickname [Kaique]
+- Configurar integração das interfaces desenvolvidas com a API Flask [Kaique + Lucas]
 
 ## Diagramas UML
 
