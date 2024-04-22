@@ -81,3 +81,14 @@ Tarefas e responsáveis:
 - Definir método que permite mudar o nome de um pokémon da lista de um usuário [Rodrigo]
 - Criar um botão no pokémon do usuário para alterar o nome [Kaique]
 - Adicionar integração do método de mudança de nome na interface de exibição das informações de um pokémon na lista de um usuário [Kaique]
+
+## Versão Revisada do Backlog da Sprint:
+
+
+## Diagramas UML
+
+### Diagrama de Classe
+
+![DiagramaClasses](umls/DiagramaClasses.png)
+
+### Diagrama de Atividades
