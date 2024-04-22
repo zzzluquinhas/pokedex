@@ -33,7 +33,7 @@ export function MyPokemonPage(props){
     const indexOfLastPokemon = currentPage * pokemonPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonPerPage;
     
-    const currentPokemon = ((indexOfFirstPokemon || indexOfLastPokemon) == 0) ? pokemonPages.slice(
+    const currentPokemon = (pokemonPages.length > 0) ? pokemonPages.slice(
       indexOfFirstPokemon,
       indexOfLastPokemon
     ) : [];
